@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Ellen Kappus | CWC Faculty Profile</title>
+    <style>
+        :root { --cwc-blue: #004a99; --cwc-gold: #ffc425; --text-dark: #333; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: var(--text-dark); margin: 0; background-color: #f9f9f9; }
+        
+        /* Header & Profile Section */
+        header { background: var(--cwc-blue); color: #fff; padding: 4rem 1rem; text-align: center; border-bottom: 5px solid var(--cwc-gold); }
+        .profile-img { 
+            width: 180px; height: 180px; border-radius: 50%; 
+            border: 4px solid var(--cwc-gold); object-fit: cover; 
+            margin-bottom: 1.5rem; background-color: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+        /* Action Buttons */
+        .btn-container { margin-top: 1.5rem; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .btn { 
+            padding: 10px 25px; border-radius: 25px; text-decoration: none; 
+            font-weight: bold; transition: 0.3s; font-size: 0.9rem;
+        }
+        .btn-cv { background: var(--cwc-gold); color: var(--cwc-blue); }
+        .btn-linkedin { background: #0077b5; color: white; }
+        .btn:hover { opacity: 0.8; transform: translateY(-2px); }
+
+        .container { max-width: 950px; margin: 2rem auto; background: #fff; padding: 2.5rem; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        h1 { margin: 0; font-size: 2.8rem; letter-spacing: -1px; }
+        h2 { color: var(--cwc-blue); border-left: 4px solid var(--cwc-gold); padding-left: 15px; margin-top: 2.5rem; }
+        
+        /* Layout Elements */
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem; }
+        .card { background: #f0f4f8; padding: 1.5rem; border-radius: 8px; border-top: 3px solid var(--cwc-blue); }
+        
+        .contact-bar { text-align: center; margin-top: 1rem; font-weight: 600; font-size: 1.1rem; }
+        .contact-bar a { color: #fff; text-decoration: none; }
+        footer { text-align: center; padding: 3rem; color: #888; font-size: 0.85rem; }
+        
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="profile-photo.jpg" alt="Dr. Ellen Kappus" class="profile-img">
+    <h1>Ellen Kappus, EdD</h1>
+    <p style="font-size: 1.3rem; opacity: 0.9; margin-top: 10px;">IET Grant Manager & Adjunct Professor</p>
+    
+    <div class="contact-bar">
+        <a href="mailto:ekappus@cwc.edu">ekappus@cwc.edu</a>
+    </div>
+
+    <div class="btn-container">
+        <a href="#" class="btn btn-linkedin" target="_blank">LinkedIn Profile</a>
+        <a href="Ellen_Kappus_CV.pdf" class="btn btn-cv" download>Download CV</a>
+    </div>
+</header>
+
+<div class="container">
+    <section>
+        <h2>Professional Focus</h2>
+        <p>
+            As a specialist in <strong>Literacy and Language</strong> with [Central Wyoming College](https://www.cwc.edu/), I manage the Integrated Education and Training (IET) grant. My work ensures that adult learners not only gain linguistic proficiency but also the technical skills required for the Wyoming workforce.
+        </p>
+    </section>
+
+    <div class="grid">
+        <div class="card">
+            <h3>Grant Leadership</h3>
+            <p>Directing statewide initiatives to integrate basic education with career pathways in Healthcare, Hospitality, and Manufacturing.</p>
+        </div>
+        <div class="card">
+            <h3>Literacy Research</h3>
+            <p>Developing explicit instructional routines for vocabulary growth and applying the <strong>Science of Reading</strong> to adult education.</p>
+        </div>
+    </div>
+
+    <section>
+        <h2>Select Publications & Presentations</h2>
+        <ul>
+            <li><strong>Instructional Design:</strong> Developed the "Three-Tier Model" for vocabulary instruction, featured on [Vocabulary Growth](https://www.vocabularygrowth.com/).</li>
+            <li><strong>National Advocacy:</strong> Presentation on <em>Explicit Language Instruction</em> for The Reading League.</li>
+            <li><strong>Workforce Development:</strong> "Contextualizing ESL for High-Growth Industries" - CWC Faculty Symposium.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Education & Credentials</h2>
+        <p><strong>Doctor of Education (EdD)</strong>, Curriculum and Instruction — University of Wyoming</p>
+        <p><strong>National Board Certified Teacher</strong> — English as a New Language</p>
+    </section>
+</div>
+
+<footer>
+    &copy; 2026 Dr. Ellen Kappus | [Central Wyoming College](https://www.cwc.edu/)
+</footer>
+
+</body>
+</html>
