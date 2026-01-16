@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ehri's Phases of Word Reading Development</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Noto Sans for readability -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Noto Sans', sans-serif; }
+        .phase-card { transition: all 0.3s ease; }
+        .phase-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); }
+        .hidden-content { display: none; }
+        .fade-in { animation: fadeIn 0.5s ease-in-out; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-book-open text-indigo-600 text-2xl"></i>
+                <h1 class="text-xl md:text-2xl font-bold text-slate-800">Ehri's Phases <span class="text-slate-500 font-normal text-base hidden sm:inline">of Word Reading Development</span></h1>
+            </div>
+            <nav class="flex gap-4 text-sm font-semibold">
+                <a href="#phases" class="hover:text-indigo-600">The Phases</a>
+                <a href="#game" class="hover:text-indigo-600">Review Game</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-8">
+
+        <!-- Intro -->
+        <section class="mb-12 text-center max-w-3xl mx-auto">
+            <h2 class="text-3xl font-bold mb-4">How do we learn to read?</h2>
+            <p class="text-lg text-slate-600">
+                Explore Linnea Ehri's theoretical framework explaining how readers move from relying on visual cues to becoming proficient, automatic readers.
+            </p>
+        </section>
+
+        <!-- Interactive Phases Graphic -->
+        <section id="phases" class="mb-20">
+            <h3 class="text-xl font-bold mb-6 border-b pb-2">Interactive Graphic: Select a Phase to Explore</h3>
+            
+            <!-- Grid Layout for Phases -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                
+                <!-- Phase 1 Card -->
+                <div onclick="selectPhase(1)" id="card-1" class="phase-card cursor-pointer bg-white border-l-8 border-rose-500 rounded-lg p-6 shadow-sm hover:bg-rose-50 active-card group">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="bg-rose-100 p-3 rounded-full text-rose-600 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-eye text-xl"></i>
+                        </div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-rose-500">Phase 1</span>
+                    </div>
+                    <h4 class="text-lg font-bold mb-2">Pre-alphabetic</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">The "Visual Cue" stage. Reading is guessing based on environment.</p>
+                </div>
+
+                <!-- Phase 2 Card -->
+                <div onclick="selectPhase(2)" id="card-2" class="phase-card cursor-pointer bg-white border-l-8 border-amber-500 rounded-lg p-6 shadow-sm hover:bg-amber-50 group">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="bg-amber-100 p-3 rounded-full text-amber-600 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-puzzle-piece text-xl"></i>
+                        </div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-amber-500">Phase 2</span>
+                    </div>
+                    <h4 class="text-lg font-bold mb-2">Partial Alphabetic</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">The "Phonetic Cue" stage. Uses some letter sounds (first/last) to guess.</p>
+                </div>
+
+                <!-- Phase 3 Card -->
+                <div onclick="selectPhase(3)" id="card-3" class="phase-card cursor-pointer bg-white border-l-8 border-emerald-500 rounded-lg p-6 shadow-sm hover:bg-emerald-50 group">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="bg-emerald-100 p-3 rounded-full text-emerald-600 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-volume-high text-xl"></i>
+                        </div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-emerald-500">Phase 3</span>
+                    </div>
+                    <h4 class="text-lg font-bold mb-2">Full Alphabetic</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">The "Decoding" stage. Sounds out every letter sequentially.</p>
+                </div>
+
+                <!-- Phase 4 Card -->
+                <div onclick="selectPhase(4)" id="card-4" class="phase-card cursor-pointer bg-white border-l-8 border-sky-500 rounded-lg p-6 shadow-sm hover:bg-sky-50 group">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="bg-sky-100 p-3 rounded-full text-sky-600 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-bolt text-xl"></i>
+                        </div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-sky-500">Phase 4</span>
+                    </div>
+                    <h4 class="text-lg font-bold mb-2">Consolidated</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">The "Automatic" stage. Instantly recognizes chunks and whole words.</p>
+                </div>
+            </div>
+
+            <!-- Detail View Area -->
+            <div id="detail-view" class="bg-white rounded-xl shadow-md border border-slate-200 p-8 min-h-[300px] relative overflow-hidden">
+                <!-- Content will be injected here by JS -->
+                <div class="flex flex-col items-center justify-center h-full text-slate-400 py-12">
+                    <i class="fa-solid fa-arrow-up text-4xl mb-4 animate-bounce"></i>
+                    <p class="text-lg">Click a card above to see detailed examples.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Game Section -->
+        <section id="game" class="bg-slate-800 text-white rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+            <!-- Background Decoration -->
+            <div class="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-indigo-500 rounded-full opacity-20 blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 -ml-16 -mb-16 w-64 h-64 bg-rose-500 rounded-full opacity-20 blur-3xl"></div>
+
+            <div class="relative z-10 max-w-4xl mx-auto">
+                <div class="flex items-center gap-4 mb-8 border-b border-slate-600 pb-6">
+                    <div class="bg-indigo-500 p-3 rounded-lg">
+                        <i class="fa-solid fa-user-secret text-2xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold">The Reading Detective</h2>
+                        <p class="text-slate-300 text-sm">Diagnose the student's reading phase based on their behavior.</p>
+                    </div>
+                    <div class="ml-auto text-right">
+                        <span id="score-display" class="text-2xl font-mono font-bold text-indigo-400">0/4</span>
+                        <p class="text-xs text-slate-400">Solved</p>
+                    </div>
+                </div>
+
+                <!-- Game Container -->
+                <div id="quiz-container">
+                    <!-- Scenario Card -->
+                    <div id="question-card" class="bg-slate-700/50 rounded-xl p-6 md:p-8 mb-6 border border-slate-600 backdrop-blur-sm">
+                        <h3 id="scenario-title" class="text-xl font-bold text-indigo-300 mb-2">Scenario 1: Leo's Logos</h3>
+                        <p id="scenario-text" class="text-lg leading-relaxed text-slate-100">
+                            Leo, a preschooler, gets excited whenever you drive past a specific store. He points at the large red bullseye logo and says, "Look, it's Target!" Later, you show him the word "Target" written on an index card without the logo, and he says he doesn't know what it is.
+                        </p>
+                    </div>
+
+                    <!-- Options Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="options-grid">
+                        <!-- Buttons injected by JS -->
+                    </div>
+
+                    <!-- Feedback Area (Hidden initially) -->
+                    <div id="feedback-area" class="hidden mt-6 bg-slate-900/80 rounded-lg p-6 border-l-4">
+                        <h4 id="feedback-title" class="font-bold text-lg mb-1">Correct!</h4>
+                        <p id="feedback-text" class="text-slate-300"></p>
+                        <button onclick="nextQuestion()" id="next-btn" class="mt-4 px-6 py-2 bg-indigo-600 hover:bg-indigo-500 rounded font-bold transition-colors">
+                            Next Case <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Completion Screen (Hidden initially) -->
+                <div id="completion-screen" class="hidden text-center py-12">
+                    <div class="text-6xl mb-6">🎓</div>
+                    <h3 class="text-3xl font-bold mb-4">Case Files Closed!</h3>
+                    <p class="text-xl text-slate-300 mb-8">You have successfully reviewed all student profiles.</p>
+                    <button onclick="resetGame()" class="px-8 py-3 bg-white text-slate-900 rounded-full font-bold hover:bg-slate-200 transition-colors">
+                        Play Again
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t py-8 text-center text-slate-500 text-sm">
+        <p>&copy; 2024 Literacy Education Dept. | Ehri's Phases Interactive Module</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- PHASE DATA ---
+        const phasesData = {
+            1: {
+                title: "Phase 1: Pre-alphabetic Phase",
+                color: "rose",
+                icon: "fa-eye",
+                overview: "The 'visual cue' stage. Readers have little to no understanding of the alphabetic principle. They 'read' words by memorizing visual features or context.",
+                characteristics: [
+                    "Relies on environmental print, logos, or pictures.",
+                    "Reading is essentially 'guessing' based on visual memory.",
+                    "No connection made between letters and sounds."
+                ],
+                examples: [
+                    { title: "The Logo Reader", desc: "Recognizes the golden arches as 'McDonalds' but can't read the word on plain paper." },
+                    { title: "Story Reteller", desc: "'Reads' a familiar book by looking at pictures and reciting from memory." },
+                    { title: "Shape Matcher", desc: "Recognizes their name only by its distinct shape or first letter's look." }
+                ]
+            },
+            2: {
+                title: "Phase 2: Partial Alphabetic Phase",
+                color: "amber",
+                icon: "fa-puzzle-piece",
+                overview: "The 'phonetic cue' stage. Readers begin to form connections between some letters (usually first and last) and their corresponding sounds.",
+                characteristics: [
+                    "Emerging knowledge of letter names and sounds.",
+                    "Uses partial phonetic cues (e.g., first letter) + context to guess.",
+                    "Reading is unreliable; errors often share letters with the target word."
+                ],
+                examples: [
+                    { title: "Initial Sound Guess", desc: "Sees 'Puppy', says 'Pony' because both start with 'P'." },
+                    { title: "Skeleton Writing", desc: "Writes 'ML' for the word 'Mail' (recording dominant sounds)." },
+                    { title: "Vowel Confusion", desc: "Reads 'Cat' correctly but struggles to distinguish it from 'Cot' or 'Cut'." }
+                ]
+            },
+            3: {
+                title: "Phase 3: Full Alphabetic Phase",
+                color: "emerald",
+                icon: "fa-volume-high",
+                overview: "The 'decoding' stage. Readers can form complete connections between graphemes (letters) and phonemes (sounds) to decode words sequentially.",
+                characteristics: [
+                    "Attends to every letter in a word.",
+                    "Can sound out and blend unfamiliar regular words (decoding).",
+                    "Critical for 'orthographic mapping' (storing words for memory).",
+                    "Reading may be slow and laborious."
+                ],
+                examples: [
+                    { title: "The Sounder-Outer", desc: "Reads 'ship' by saying '/sh/ - /i/ - /p/' then blending." },
+                    { title: "Nonsense Words", desc: "Can accurately read fake words like 'bip' or 'mab' using rules." },
+                    { title: "The Pause", desc: "Pauses at unfamiliar words to decode sound-by-sound." }
+                ]
+            },
+            4: {
+                title: "Phase 4: Consolidated Alphabetic Phase",
+                color: "sky",
+                icon: "fa-bolt",
+                overview: "The 'automatic' stage. Readers recognize larger, multi-letter chunks of words (syllables, affixes, morphemes) to read quickly and efficiently.",
+                characteristics: [
+                    "Reads fluently and automatically ('by sight').",
+                    "Recognizes patterns like prefixes (un-, re-) and suffixes (-ing).",
+                    "Cognitive resources freed up for comprehension."
+                ],
+                examples: [
+                    { title: "Chunk Reader", desc: "Instantly reads 'unbelievable' by seeing un-believe-able." },
+                    { title: "Expressive Reader", desc: "Reads aloud with good expression and pacing." },
+                    { title: "Multisyllabic Master", desc: "Quickly tackles words like 'information' or 'department'." }
+                ]
+            }
+        };
+
+        // --- PHASE LOGIC ---
+        function selectPhase(id) {
+            const data = phasesData[id];
+            const detailView = document.getElementById('detail-view');
+            
+            // Reset active styles on all cards
+            document.querySelectorAll('.phase-card').forEach(card => {
+                card.classList.remove('ring-4', 'ring-offset-2');
+                // Remove specific color rings to avoid clutter, just generic reset
+                card.style.transform = "scale(1)";
+            });
+
+            // Add active style to clicked card
+            const activeCard = document.getElementById(`card-${id}`);
+            activeCard.classList.add('ring-4', 'ring-offset-2', `ring-${data.color}-400`);
+            activeCard.style.transform = "scale(1.02)";
+
+            // Build HTML
+            const contentHtml = `
+                <div class="fade-in">
+                    <div class="flex items-center gap-4 mb-6 pb-4 border-b border-slate-100">
+                        <div class="bg-${data.color}-100 p-4 rounded-full text-${data.color}-600">
+                            <i class="fa-solid ${data.icon} text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800">${data.title}</h3>
+                            <p class="text-slate-500 font-medium">${data.overview}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="font-bold text-${data.color}-600 uppercase tracking-wide text-sm mb-3">Key Characteristics</h4>
+                            <ul class="space-y-2">
+                                ${data.characteristics.map(char => `<li class="flex items-start gap-2"><i class="fa-solid fa-check mt-1 text-${data.color}-500"></i> <span class="text-slate-700">${char}</span></li>`).join('')}
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-${data.color}-600 uppercase tracking-wide text-sm mb-3">Student Examples</h4>
+                            <div class="space-y-3">
+                                ${data.examples.map(ex => `
+                                    <div class="bg-slate-50 p-3 rounded border-l-4 border-${data.color}-400">
+                                        <span class="font-bold text-slate-800 block">${ex.title}</span>
+                                        <span class="text-sm text-slate-600">${ex.desc}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            detailView.innerHTML = contentHtml;
+        }
+
+        // Initialize with Phase 1 open
+        window.onload = () => {
+            selectPhase(1);
+            loadQuestion();
+        };
+
+        // --- GAME DATA ---
+        const questions = [
+            {
+                id: 1,
+                title: "Leo's Logos",
+                text: "Leo, a preschooler, points at the Target logo and says 'Target!' but cannot read the word 'Target' when written on a plain index card.",
+                correct: "Pre-alphabetic",
+                feedback: "Leo relies entirely on visual cues (the logo). He hasn't connected letters to sounds yet.",
+                options: ["Partial Alphabetic", "Full Alphabetic", "Pre-alphabetic", "Consolidated Alphabetic"]
+            },
+            {
+                id: 2,
+                title: "Mia's Mystery Words",
+                text: "Mia reads 'The dog sat on the rug' as 'The dog sat on the... road.' She saw the 'r' and 'g' and guessed.",
+                correct: "Partial Alphabetic",
+                feedback: "Mia used partial cues (first and last letter) and context to guess, ignoring the middle sounds.",
+                options: ["Consolidated Alphabetic", "Pre-alphabetic", "Full Alphabetic", "Partial Alphabetic"]
+            },
+            {
+                id: 3,
+                title: "Sam's Slow Sounds",
+                text: "Sam reads slowly but accurately. For 'clamp', he audibly says '/c/ - /l/ - /a/ - /m/ - /p/' before blending it.",
+                correct: "Full Alphabetic",
+                feedback: "Sam is decoding sequentially, attending to every letter. It's accurate but laborious.",
+                options: ["Full Alphabetic", "Partial Alphabetic", "Consolidated Alphabetic", "Pre-alphabetic"]
+            },
+            {
+                id: 4,
+                title: "Aisha's Automatic Reading",
+                text: "Aisha reads quickly with expression. She instantly recognizes complex words like 'suddenly' and 'mysterious' without pausing.",
+                correct: "Consolidated Alphabetic",
+                feedback: "Aisha recognizes multi-letter chunks and reads automatically, focusing on meaning.",
+                options: ["Pre-alphabetic", "Full Alphabetic", "Partial Alphabetic", "Consolidated Alphabetic"]
+            }
+        ];
+
+        let currentQIndex = 0;
+        let score = 0;
+
+        // --- GAME LOGIC ---
+        function loadQuestion() {
+            const q = questions[currentQIndex];
+            document.getElementById('scenario-title').innerText = `Scenario ${currentQIndex + 1}: ${q.title}`;
+            document.getElementById('scenario-text').innerText = q.text;
+            
+            // Update Score Display
+            document.getElementById('score-display').innerText = `${currentQIndex}/${questions.length}`;
+
+            // Reset UI
+            document.getElementById('feedback-area').classList.add('hidden');
+            const grid = document.getElementById('options-grid');
+            grid.innerHTML = '';
+
+            // Create buttons
+            q.options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = "p-4 bg-slate-600 hover:bg-slate-500 rounded-lg font-semibold text-left transition-colors border-2 border-transparent";
+                btn.innerText = opt;
+                btn.onclick = () => checkAnswer(opt, btn);
+                grid.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(selected, btnElement) {
+            const q = questions[currentQIndex];
+            const feedbackArea = document.getElementById('feedback-area');
+            const feedbackTitle = document.getElementById('feedback-title');
+            const feedbackText = document.getElementById('feedback-text');
+            const buttons = document.querySelectorAll('#options-grid button');
+
+            // Disable all buttons
+            buttons.forEach(b => b.disabled = true);
+
+            if (selected === q.correct)
