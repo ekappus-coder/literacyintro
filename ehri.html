@@ -353,6 +353,86 @@
                 correct: "Consolidated Alphabetic",
                 feedback: "Aisha recognizes multi-letter chunks and reads automatically, focusing on meaning.",
                 options: ["Pre-alphabetic", "Full Alphabetic", "Partial Alphabetic", "Consolidated Alphabetic"]
+            },
+            {
+                id: 5,
+                title: "The Pizza Box",
+                text: "Joey sees a pizza box and shouts 'Pizza!' Later, when shown the word 'pizza' in black text on white paper, he shrugs and says he doesn't know what it is.",
+                correct: "Pre-alphabetic",
+                feedback: "Joey is reading the environmental context (the box), not the word itself. Without the visual cue, he cannot read it.",
+                options: ["Pre-alphabetic", "Partial Alphabetic", "Full Alphabetic", "Consolidated Alphabetic"]
+            },
+            {
+                id: 6,
+                title: "House or Horse?",
+                text: "While reading, Sarah comes across the word 'house' but reads it as 'horse'. She noticed the 'h' at the start and the 'se' at the end but missed the middle vowel difference.",
+                correct: "Partial Alphabetic",
+                feedback: "Sarah is using partial phonetic cues (boundaries of the word) but isn't yet fully attending to the internal vowel structure.",
+                options: ["Full Alphabetic", "Partial Alphabetic", "Pre-alphabetic", "Consolidated Alphabetic"]
+            },
+            {
+                id: 7,
+                title: "Decoding 'Splash'",
+                text: "Kevin encounters the word 'splash'. He pauses and whispers '/s/ /p/ /l/ /a/ /sh/' before saying the whole word. He gets it right, but it takes effort.",
+                correct: "Full Alphabetic",
+                feedback: "Kevin is demonstrating full decoding skills. He maps every sound to a letter, blending them sequentially.",
+                options: ["Partial Alphabetic", "Full Alphabetic", "Consolidated Alphabetic", "Pre-alphabetic"]
+            },
+            {
+                id: 8,
+                title: "Prefix Pro",
+                text: "When reading the word 'reconstruct', Maya instantly sees 're-', 'con-', and 'struct' and says the word immediately without sounding it out letter-by-letter.",
+                correct: "Consolidated Alphabetic",
+                feedback: "Maya is chunking. She recognizes morphemes (prefixes and roots) as units, allowing for instant recognition.",
+                options: ["Consolidated Alphabetic", "Full Alphabetic", "Partial Alphabetic", "Pre-alphabetic"]
+            },
+            {
+                id: 9,
+                title: "The Cereal Aisle",
+                text: "In the grocery store, toddler Ben grabs a box and says 'Cheerios!' because of the yellow box, even though the box actually says 'Oats' in a similar font.",
+                correct: "Pre-alphabetic",
+                feedback: "Ben is relying on visual features (color, box shape) rather than alphabetic knowledge. He is 'guessing' based on memory of the product.",
+                options: ["Partial Alphabetic", "Pre-alphabetic", "Full Alphabetic", "Consolidated Alphabetic"]
+            },
+            {
+                id: 10,
+                title: "Soap vs Soup",
+                text: "Jenny reads the sentence 'I wash with soup.' She sees the 's' and the 'p' in 'soap' and confuses it with 'soup', missing the vowel team difference.",
+                correct: "Partial Alphabetic",
+                feedback: "Jenny is in the partial phase. She has some letter knowledge (s, p) but lacks the full decoding skill to distinguish the vowel team 'oa' vs 'ou'.",
+                options: ["Full Alphabetic", "Consolidated Alphabetic", "Partial Alphabetic", "Pre-alphabetic"]
+            },
+            {
+                id: 11,
+                title: "Nonsense Word Test",
+                text: "During a test, Marcus is asked to read 'blim'. He has never seen it before, but sounds it out: '/b/ /l/ /i/ /m/... blim.' He reads it correctly.",
+                correct: "Full Alphabetic",
+                feedback: "Marcus has mastered the alphabetic principle. He can decode unknown or nonsense words by strictly following letter-sound rules.",
+                options: ["Pre-alphabetic", "Full Alphabetic", "Partial Alphabetic", "Consolidated Alphabetic"]
+            },
+            {
+                id: 12,
+                title: "Scientific Fluency",
+                text: "Elena reads a science textbook. She encounters 'photosynthesis'. Instead of slowing down, she recognizes 'photo', 'synth', and 'esis' and reads it smoothly.",
+                correct: "Consolidated Alphabetic",
+                feedback: "Elena recognizes large orthographic units (morphemes/syllables), enabling her to read long, technical words automatically.",
+                options: ["Consolidated Alphabetic", "Full Alphabetic", "Partial Alphabetic", "Pre-alphabetic"]
+            },
+            {
+                id: 13,
+                title: "Color Cues",
+                text: "Timmy says he can read his name, but only if it's written in his favorite blue marker. If you write 'Timmy' in black pen, he doesn't know it's his name.",
+                correct: "Pre-alphabetic",
+                feedback: "Timmy is using a non-alphabetic visual cue (color) to identify the word, not the letters themselves.",
+                options: ["Partial Alphabetic", "Full Alphabetic", "Pre-alphabetic", "Consolidated Alphabetic"]
+            },
+            {
+                id: 14,
+                title: "Strictly Sequential",
+                text: "When reading 'stand', Lucas says '/s/ /t/ /a/ /n/ /d/'. He doesn't yet see 'st' or 'and' as chunks, but he gets the word right every time.",
+                correct: "Full Alphabetic",
+                feedback: "Lucas is a Full Alphabetic reader. He processes every letter-sound connection individually rather than seeing consolidated chunks.",
+                options: ["Full Alphabetic", "Consolidated Alphabetic", "Pre-alphabetic", "Partial Alphabetic"]
             }
         ];
 
@@ -393,4 +473,60 @@
             // Disable all buttons
             buttons.forEach(b => b.disabled = true);
 
-            if (selected === q.correct)
+            if (selected === q.correct) {
+                // Correct
+                btnElement.classList.remove('bg-slate-600', 'hover:bg-slate-500');
+                btnElement.classList.add('bg-emerald-600', 'border-emerald-400');
+                feedbackTitle.innerText = "Correct! ✅";
+                feedbackTitle.className = "font-bold text-lg mb-1 text-emerald-400";
+                feedbackArea.classList.add('border-emerald-500');
+                feedbackArea.classList.remove('border-rose-500');
+            } else {
+                // Incorrect
+                btnElement.classList.remove('bg-slate-600', 'hover:bg-slate-500');
+                btnElement.classList.add('bg-rose-600', 'border-rose-400');
+                
+                // Highlight correct one
+                buttons.forEach(b => {
+                    if (b.innerText === q.correct) {
+                        b.classList.remove('bg-slate-600');
+                        b.classList.add('bg-emerald-600/50', 'border-emerald-400/50'); 
+                    }
+                });
+
+                feedbackTitle.innerText = "Incorrect ❌";
+                feedbackTitle.className = "font-bold text-lg mb-1 text-rose-400";
+                feedbackArea.classList.add('border-rose-500');
+                feedbackArea.classList.remove('border-emerald-500');
+            }
+
+            feedbackText.innerText = q.feedback;
+            feedbackArea.classList.remove('hidden');
+            feedbackArea.classList.add('fade-in');
+        }
+
+        function nextQuestion() {
+            currentQIndex++;
+            if (currentQIndex < questions.length) {
+                loadQuestion();
+            } else {
+                showCompletion();
+            }
+        }
+
+        function showCompletion() {
+            document.getElementById('quiz-container').classList.add('hidden');
+            document.getElementById('completion-screen').classList.remove('hidden');
+            document.getElementById('score-display').innerText = `${questions.length}/${questions.length}`;
+        }
+
+        function resetGame() {
+            currentQIndex = 0;
+            document.getElementById('quiz-container').classList.remove('hidden');
+            document.getElementById('completion-screen').classList.add('hidden');
+            loadQuestion();
+        }
+
+    </script>
+</body>
+</html>
