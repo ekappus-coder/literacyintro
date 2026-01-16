@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Literacy Intro: Phonological Awareness</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #e67e22;
+            --light: #ecf0f1;
+            --white: #ffffff;
+            --success: #27ae60;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f7f6;
+        }
+
+        /* Layout */
+        header {
+            background: var(--primary);
+            color: var(--white);
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        header h1 { margin-bottom: 0.5rem; }
+        header p { opacity: 0.9; font-weight: 300; }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 2rem;
+        }
+
+        /* Sections */
+        .card {
+            background: var(--white);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--accent);
+        }
+
+        h2 { color: var(--primary); margin-bottom: 1rem; display: flex; align-items: center; }
+        h2::before { content: '•'; color: var(--accent); margin-right: 10px; font-size: 1.5rem; }
+        
+        h3 { margin-top: 1.5rem; margin-bottom: 0.5rem; color: #555; }
+
+        /* Interactivity: Progression Steps */
+        .progression-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .step {
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .step-header {
+            background: #f9f9f9;
+            padding: 1rem;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .step-header:hover { background: #eee; }
+        
+        .step-content {
+            padding: 0 1rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: var(--white);
+        }
+
+        .step.active .step-content {
+            padding: 1rem;
+            max-height: 200px; /* Arbitrary height for expansion */
+            border-top: 1px solid #ddd;
+        }
+
+        .step-icon { font-size: 1.2rem; transition: transform 0.3s; }
+        .step.active .step-icon { transform: rotate(180deg); }
+
+        /* Sidebar */
+        aside {
+            position: sticky;
+            top: 2rem;
+            height: fit-content;
+        }
+
+        .quick-fact {
+            background: var(--primary);
+            color: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .quick-fact h4 { margin-bottom: 0.5rem; color: var(--accent); }
+        .big-stat { font-size: 2.5rem; font-weight: bold; display: block; margin: 0.5rem 0; }
+
+        /* Lesson Plan Table */
+        table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: #f2f2f2; color: var(--primary); }
+        
+        /* Visual Aid Placeholder */
+        .visual-aid {
+            background: #eef2f3;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            margin: 1rem 0;
+            color: #7f8c8d;
+            font-style: italic;
+            border: 2px dashed #bdc3c7;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #777;
+            font-size: 0.9rem;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Elementary Literacy Intro</h1>
+    <p>Module 1: Phonological Awareness (Kindergarten)</p>
+</header>
+
+<div class="container">
+    <main>
+        <section class="card">
+            <h2>1. What is Phonological Awareness?</h2>
+            <p>Phonological awareness is the ability to recognize and manipulate the spoken parts of words (syllables, onset-rime, and phonemes). It is an <strong>auditory skill</strong> that does not require printed letters.</p>
+            <div class="visual-aid">
+                [Visual: Diagram showing Ear ➔ Sound Waves ➔ Brain processing Rhymes & Syllables]
+            </div>
+            <p><em>Note: This is distinct from Phonics, which connects sounds to print.</em></p>
+        </section>
+
+        <section class="card">
+            <h2>2. The Science of Reading</h2>
+            <p>Research from the National Reading Panel (2000) indicates:</p>
+            <ul>
+                <li>Phonological awareness is a <strong>top predictor</strong> of early reading success.</li>
+                <li>Explicit instruction significantly improves reading and spelling development.</li>
+                <li>It acts as the foundation upon which phonics instruction is built.</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2>3. Skill Progression Ladder</h2>
+            <p>Click the stages below to see how skills develop from simple to complex:</p>
+            <div class="progression-container">
+                <div class="step">
+                    <div class="step-header">
+                        1. Rhyme & Alliteration
+                        <span class="step-icon">▼</span>
+                    </div>
+                    <div class="step-content">
+                        <p><strong>Age 3-4:</strong> Recognizing matching sounds at the ends or beginnings of words (e.g., "Cat, Bat, Hat").</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-header">
+                        2. Sentence Segmentation
+                        <span class="step-icon">▼</span>
+                    </div>
+                    <div class="step-content">
+                        <p><strong>Age 4-5:</strong> Hearing individual words within a spoken sentence.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-header">
+                        3. Syllables
+                        <span class="step-icon">▼</span>
+                    </div>
+                    <div class="step-content">
+                        <p><strong>Age 5 (Kindergarten):</strong> Clapping or counting parts of a word (e.g., "El-e-phant" = 3).</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-header">
+                        4. Onset & Rime
+                        <span class="step-icon">▼</span>
+                    </div>
+                    <div class="step-content">
+                        <p><strong>Age 5.5:</strong> Splitting a syllable into start (onset) and end (rime). Example: /b/ - /at/.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-header">
+                        5. Phonemes (The Goal!)
+                        <span class="step-icon">▼</span>
+                    </div>
+                    <div class="step-content">
+                        <p><strong>Age 6+:</strong> Manipulating individual sounds. Blending (/c/ /a/ /t/ -> cat) and Segmenting (cat -> /c/ /a/ /t/).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>4. Instructional Example: "The Sound Game"</h2>
+            <p><strong>Objective:</strong> Students will blend onsets and rimes to form words.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Step</th>
+                        <th>Teacher Action (Script)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>I Do</strong></td>
+                        <td>"Listen to these parts: /s/ ... /un/. What is the word? Sun."</td>
+                    </tr>
+                    <tr>
+                        <td><strong>We Do</strong></td>
+                        <td>"Let's try one together. /m/ ... /ap/. Say it with me. Map!"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>You Do</strong></td>
+                        <td>"Your turn. /f/ ... /ish/. What is the word?" (Students: Fish!)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <aside>
+        <div class="quick-fact">
+            <h4>Recommended Time</h4>
+            <span class="big-stat">10-15</span>
+            <p>Minutes Daily</p>
+            <small>Brief, brisk, consistent practice is best.</small>
+        </div>
+        
+        <div class="card" style="border-left-color: var(--success);">
+            <h3>Teacher Checklist</h3>
+            <label style="display:block; margin: 5px 0;">
+                <input type="checkbox"> Modeled the skill?
+            </label>
+            <label style="display:block; margin: 5px 0;">
+                <input type="checkbox"> Used manipulatives?
+            </label>
+            <label style="display:block; margin: 5px 0;">
+                <input type="checkbox"> Corrective feedback?
+            </label>
+            <button onclick="alert('Great job preparing your lesson!')" style="width:100%; margin-top:10px; padding:8px; background:var(--success); color:white; border:none; border-radius:4px; cursor:pointer;">Complete Review</button>
+        </div>
+    </aside>
+</div>
+
+<footer>
+    <p>&copy; 2026 Elementary Literacy Intro | Designed for New Teachers</p>
+</footer>
+
+<script>
+    // Accordion Logic for Progression Steps
+    document.querySelectorAll('.step-header').forEach(header => {
+        header.addEventListener('click', () => {
+            const step = header.parentElement;
+            
+            // Toggle active class
+            step.classList.toggle('active');
+
+            // Optional: Close others when one opens (Accordion style)
+            // document.querySelectorAll('.step').forEach(otherStep => {
+            //     if (otherStep !== step) otherStep.classList.remove('active');
+            // });
+        });
+    });
+</script>
+
+</body>
+</html>
