@@ -130,4 +130,1128 @@
             display: flex;
             align-items: center;
             font-size: 1.5rem;
-            font
+            font-weight: bold;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .svr-component {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            width: 150px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .svr-d { background-color: var(--rope-lower); }
+        .svr-lc { background-color: var(--rope-upper); }
+        .svr-rc { background-color: var(--success-color); opacity: 0.5; }
+        .math-symbol { font-size: 3rem; color: #555; }
+        .toggle-container {
+            display: flex;
+            gap: 5px;
+            margin-top: 10px;
+        }
+        .toggle-btn {
+            font-size: 0.8rem;
+            padding: 5px 10px;
+            cursor: pointer;
+            border: 1px solid white;
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+        .toggle-btn.active { background: white; color: #333; }
+
+        /*--- 2. Ehri Styles ---*/
+        .ehri-steps {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            position: relative;
+        }
+        .ehri-steps::before {
+            content: '';
+            position: absolute;
+            top: 30%;
+            left: 5%;
+            right: 5%;
+            height: 4px;
+            background: #ddd;
+            z-index: 0;
+        }
+        .step-node {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 22%;
+            cursor: pointer;
+        }
+        .step-circle {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border: 4px solid var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            margin-bottom: 15px;
+            transition: all 0.3s;
+        }
+        .step-node:hover .step-circle, .step-node.active-step .step-circle {
+            background: var(--secondary-color);
+            color: white;
+            transform: scale(1.1);
+        }
+        .step-label { font-size: 0.9rem; text-align: center; font-weight: bold; }
+        .step-example { font-size: 0.8rem; text-align: center; margin-top: 5px; color: #666; font-style: italic;}
+
+        /*--- 3. 4-Part Processor Styles ---*/
+        .processor-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            width: 80%;
+            position: relative;
+        }
+        .proc-unit {
+            background: white;
+            border: 3px solid var(--primary-color);
+            padding: 20px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            transition: all 0.3s;
+        }
+        .proc-unit:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0,50,150,0.2);
+            background: #f0f8ff;
+        }
+        .proc-icon { font-size: 2rem; margin-bottom: 10px; }
+        /* Arrows indicating connection */
+        .proc-arrow {
+            position: absolute;
+            background: var(--primary-color);
+            opacity: 0.3;
+        }
+        .arrow-horiz { height: 4px; width: 30px; top: 50%; left: 50%; margin-left: -15px; }
+        .arrow-vert { width: 4px; height: 30px; top: 50%; left: 50%; margin-top: -15px; }
+
+        /*--- 4. Scarborough's Rope Styles ---*/
+        .rope-container {
+            display: flex;
+            flex-direction: column;
+            width: 90%;
+        }
+        .strand-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .strand-label {
+            width: 30%;
+            font-weight: bold;
+            text-align: right;
+            padding-right: 20px;
+        }
+        .rope-visual {
+            width: 70%;
+            height: 60px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 10px 10px 0;
+        }
+        /* CSS trickery for twisting rope effect */
+        .rope-twist-upper {
+            background: repeating-linear-gradient(45deg, var(--rope-upper), var(--rope-upper) 10px, #c9302c 10px, #c9302c 20px);
+        }
+        .rope-twist-lower {
+            background: repeating-linear-gradient(45deg, var(--rope-lower), var(--rope-lower) 10px, #46b8da 10px, #46b8da 20px);
+        }
+        .rope-braid-final {
+             background: repeating-linear-gradient(45deg, 
+                var(--rope-upper), var(--rope-upper) 10px, 
+                var(--rope-lower) 10px, var(--rope-lower) 20px);
+            height: 80px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        .strand-detail { font-size: 0.7rem; color: white; padding: 2px 5px; margin-right: 5px; border-radius: 4px; display: inline-block;}
+
+        /*--- 5. Strom's Brain Styles ---*/
+        .brain-outline {
+            width: 400px;
+            height: 300px;
+            /* Simplified brain shape using border radius */
+            border-radius: 50% 50% 40% 40% / 60% 60% 40% 40%;
+            border: 4px solid #ccc;
+            position: relative;
+            background: #f9f9f9;
+        }
+        .brain-region {
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            z-index: 2;
+        }
+        /* Positioning regions roughly anatomically */
+        .region-vision { bottom: 30px; left: 40px; background: var(--danger-color); } /* Occipital */
+        .region-sound { top: 80px; left: 80px; background: var(--secondary-color); color: #333; } /* Temporal */
+        .region-meaning { top: 50px; right: 60px; background: var(--success-color); } /* Frontal/Parietalish */
+        
+        .neural-path {
+            position: absolute;
+            height: 6px;
+            background: #ddd;
+            transform-origin: 0 50%;
+            z-index: 1;
+            border-radius: 3px;
+            transition: all 1s ease-in-out;
+        }
+        /* When activated */
+        .brain-outline.wired .neural-path {
+            background: var(--primary-color);
+            box-shadow: 0 0 10px var(--primary-color);
+        }
+        .connect-btn {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 10;
+        }
+        .connect-btn:hover { background-color: #004494; }
+
+    </style>
+</head>
+<body>
+
+    <h1>The Theoretical Landscape of Elementary Literacy</h1>
+    <p class="intro-text">Professor's Note: These five models are not competing rules; they are different maps of the same territory. They help us visualize the complex, invisible process occurring in a student's mind as they learn to read.</p>
+
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchModel('svr')">1. The Simple View</button>
+        <button class="tab-btn" onclick="switchModel('ehri')">2. Ehri's Phases</button>
+        <button class="tab-btn" onclick="switchModel('fourpart')">3. 4-Part Processor</button>
+        <button class="tab-btn" onclick="switchModel('rope')">4. Scarborough's Rope</button>
+        <button class="tab-btn" onclick="switchModel('strom')">5. Strom's Reading Brain</button>
+    </div>
+
+    <div class="model-container">
+
+        <div id="svr" class="model-section active-section">
+            <h2>The Simple View of Reading (Gough & Tunmer)</h2>
+            <p>Reading comprehension is not a sum of skills, but a <b>product</b> of two distinct capacities. The critical insight is the multiplication sign: if either skill is zero, the outcome is zero.</p>
+            
+            <div class="diagram-box" style="flex-direction: column;">
+                <div class="svr-equation">
+                    <div class="svr-component svr-d">
+                        <div style="font-size: 2rem;">D</div>
+                        <div>Decoding</div>
+                        <div class="toggle-container">
+                            <button class="toggle-btn active" onclick="setSVR('d', 'low', this)">Low</button>
+                            <button class="toggle-btn" onclick="setSVR('d', 'high', this)">High</button>
+                        </div>
+                    </div>
+                    
+                    <div class="math-symbol">×</div>
+                    
+                    <div class="svr-component svr-lc">
+                        <div style="font-size: 2rem;">LC</div>
+                        <div>Language Comp</div>
+                        <div class="toggle-container">
+                            <button class="toggle-btn active" onclick="setSVR('lc', 'low', this)">Low</button>
+                            <button class="toggle-btn" onclick="setSVR('lc', 'high', this)">High</button>
+                        </div>
+                    </div>
+                    
+                    <div class="math-symbol">=</div>
+                    
+                    <div class="svr-component svr-rc" id="svr-result-box">
+                        <div style="font-size: 2rem;" id="svr-rc-text">RC</div>
+                        <div>Reading Comp</div>
+                        <div style="margin-top: 15px; font-weight: bold;" id="svr-outcome">Poor Outcome</div>
+                    </div>
+                </div>
+            </div>
+            <div class="caption">
+                <b>Diagram Check:</b> Set 'Decoding' to High and 'Language Comp' to Low. What happens? The result is poor. This explains the student who can read aloud perfectly but has no idea what they just read (often called "hyperlexia"). Both skills are necessary but insufficient on their own.
+            </div>
+        </div>
+
+
+        <div id="ehri" class="model-section">
+            <h2>Ehri's Phases of Word Reading</h2>
+            <p>This model visualizes the journey toward "sight word" status. It is a progression of how effectively a reader connects sounds to letters to glue puzzles into instantly recognized pictures.</p>
+            
+            <div class="diagram-box">
+                <div class="ehri-steps">
+                    <div class="step-node active-step">
+                        <div class="step-circle">1</div>
+                        <div class="step-label">Pre-Alphabetic</div>
+                        <div class="step-example">Reads "McDonald's" logo, but not the text.</div>
+                    </div>
+                    <div class="step-node">
+                        <div class="step-circle">2</div>
+                        <div class="step-label">Partial Alphabetic</div>
+                        <div class="step-example">Sees "Puppy", says "Pet" (uses first letter).</div>
+                    </div>
+                    <div class="step-node">
+                        <div class="step-circle">3</div>
+                        <div class="step-label">Full Alphabetic</div>
+                        <div class="step-example">Sounds out C-R-U-S-T slowly but accurately.</div>
+                    </div>
+                    <div class="step-node">
+                        <div class="step-circle">4</div>
+                        <div class="step-label">Consolidated</div>
+                        <div class="step-example">Instantly sees chunks like "ing", "tion", "est".</div>
+                    </div>
+                </div>
+            </div>
+            <div class="caption">
+                <b>Diagram Check:</b> Notice the progression is not about memorizing whole words visually. It is about becoming increasingly efficient at mapping speech sounds to letters until the process becomes instantaneous (automaticity).
+            </div>
+        </div>
+
+
+        <div id="fourpart" class="model-section">
+            <h2>The Four-Part Processing Model (Seidenberg & McClelland)</h2>
+            <p>Often called the "connectionist" view, imagine this as the engine block of the reading brain. Four distinct processors must work simultaneously and interactively to read a word.</p>
+            
+            <div class="diagram-box">
+                <div class="processor-grid">
+                    <div class="proc-unit" style="grid-column: span 2; background:#f9f9f9;">
+                        <div class="proc-icon">🤔</div>
+                        <strong>Context Processor</strong>
+                        <div style="font-size:0.9rem">Does this make sense in the sentence?</div>
+                        <div class="proc-arrow arrow-vert" style="bottom: -30px; top: auto;"></div>
+                    </div>
+
+                    <div class="proc-unit">
+                        <div class="proc-icon">📖</div>
+                        <strong>Meaning Processor</strong>
+                        <div style="font-size:0.9rem">What is the definition?</div>
+                        <div class="proc-arrow arrow-horiz" style="left: 100%; margin-left: -5px;"></div>
+                        <div class="proc-arrow arrow-vert" style="bottom: -30px; top: auto;"></div>
+                    </div>
+                    <div class="proc-unit">
+                        <div class="proc-icon">🗣️</div>
+                        <strong>Phonological Processor</strong>
+                        <div style="font-size:0.9rem">Speech Sounds</div>
+                        <div class="proc-arrow arrow-vert" style="bottom: -30px; top: auto;"></div>
+                    </div>
+
+                    <div class="proc-unit" style="grid-column: span 2; width: 50%; margin: auto;">
+                        <div class="proc-arrow arrow-vert" style="top: -30px;"></div>
+                        <div class="proc-icon">👁️</div>
+                        <strong>Orthographic Processor</strong>
+                        <div style="font-size:0.9rem">Visual Letters</div>
+                    </div>
+                </div>
+            </div>
+            <div class="caption">
+                <b>Diagram Check:</b> Hover over a processor. When a student encounters a new word, the "Orthographic" (vision) processor activates first. It immediately pings the "Phonological" (sound) and "Meaning" processors simultaneously, while "Context" checks if the result fits the sentence.
+            </div>
+        </div>
+
+
+        <div id="rope" class="model-section">
+            <h2>Scarborough's Rope</h2>
+            <p>This is perhaps the most famous visual. It shows that skilled reading is the intertwining of many sub-skills. Crucially, the two main strands behave differently over time.</p>
+            
+            <div class="diagram-box">
+                <div class="rope-container">
+                    <div class="strand-group">
+                        <div class="strand-label" style="color: var(--rope-upper)">Language Comprehension<br><small>(Increasingly Strategic)</small></div>
+                        <div class="rope-visual rope-twist-upper" style="display: flex; align-items: center; padding-left: 10px;">
+                             <span class="strand-detail" style="background:rgba(0,0,0,0.2)">Background Knowledge</span>
+                             <span class="strand-detail" style="background:rgba(0,0,0,0.2)">Vocabulary</span>
+                             <span class="strand-detail" style="background:rgba(0,0,0,0.2)">Verbal Reasoning</span>
+                        </div>
+                    </div>
+
+                    <div class="strand-group">
+                        <div class="strand-label" style="color: var(--rope-lower)">Word Recognition<br><small>(Increasingly Automatic)</small></div>
+                        <div class="rope-visual rope-twist-lower" style="display: flex; align-items: center; padding-left: 10px;">
+                            <span class="strand-detail" style="background:rgba(0,0,0,0.2)">Phonological Awareness</span>
+                            <span class="strand-detail" style="background:rgba(0,0,0,0.2)">Decoding</span>
+                            <span class="strand-detail" style="background:rgba(0,0,0,0.2)">Sight Recognition</span>
+                        </div>
+                    </div>
+
+                     <div class="strand-group" style="margin-top: -10px;">
+                        <div class="strand-label">The Goal:</div>
+                        <div class="rope-visual rope-braid-final">
+                            SKILLED READING
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="caption">
+                <b>Diagram Check:</b> Notice the difference in the labels. The lower blue strands (decoding) must become tight and automatic so the brain doesn't have to think about them. The upper red strands (comprehension) remain strategic—we always have to think to understand complex ideas.
+            </div>
+        </div>
+
+
+        <div id="strom" class="model-section">
+            <h2>Dr. Strom's Reading Brain ("Brain City")</h2>
+            <p>Modern neuroscience tells us humans are not born wired to read. We must recycle existing brain areas designed for vision, sound, and meaning, and build new "superhighways" connecting them.</p>
+            
+            <div class="diagram-box">
+                <div class="brain-outline" id="braindiagram">
+                    <button class="connect-btn" onclick="wireTheBrain()">Build the Neural Roads!</button>
+                    
+                    <div class="brain-region region-vision">Vision Villages<br><small>(New!)</small></div>
+                    <div class="brain-region region-sound">Sound City<br><small>(Innately wired)</small></div>
+                    <div class="brain-region region-meaning">Meaning Mountains<br><small>(Innately wired)</small></div>
+
+                    <div class="neural-path" style="width: 110px; bottom: 75px; left: 85px; transform: rotate(-55deg);"></div>
+                    <div class="neural-path" style="width: 110px; top: 110px; left: 160px; transform: rotate(-25deg);"></div>
+                     <div class="neural-path" style="width: 180px; bottom: 80px; left: 100px; transform: rotate(-35deg);"></div>
+
+                </div>
+            </div>
+            <div class="caption">
+                <b>Diagram Check:</b> Click the button above. We are born with "Sound City" and "Meaning Mountains" already running. Learning to read requires building a new area specifically for letters (often called the Visual Word Form Area, or "Letterbox") and physically growing neural connections to link vision to sound and meaning.
+            </div>
+        </div>
+
+    </div> <script>
+        // --- GLOBAL INTERACTIVITY ---
+
+        // Function to switch tabs
+        function switchModel(modelId) {
+            // 1. Hide all content sections
+            const sections = document.querySelectorAll('.model-section');
+            sections.forEach(section => {
+                section.classList.remove('active-section');
+            });
+
+            // 2. Deactivate all tab buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // 3. Show selected content and activate button
+            document.getElementById(modelId).classList.add('active-section');
+            // Find the button that calls this function with this ID and make it active
+            const activeBtn = Array.from(buttons).find(btn => btn.getAttribute('onclick').includes(modelId));
+            if (activeBtn) {
+                activeBtn.classList.add('active');
+            }
+        }
+
+
+        // --- SVR MODEL SPECIFIC JS ---
+        let dValue = 'low';
+        let lcValue = 'low';
+
+        function setSVR(type, value, btnElement) {
+            // Update state
+            if (type === 'd') dValue = value;
+            if (type === 'lc') lcValue = value;
+
+            // Update button visual states within the clicked group
+            const parent = btnElement.parentElement;
+            const siblings = parent.querySelectorAll('.toggle-btn');
+            siblings.forEach(sib => sib.classList.remove('active'));
+            btnElement.classList.add('active');
+
+            // Calculate Outcome
+            const resultBox = document.getElementById('svr-result-box');
+            const resultText = document.getElementById('svr-outcome');
+
+            resultBox.style.opacity = "1";
+
+            if (dValue === 'high' && lcValue === 'high') {
+                resultBox.style.backgroundColor = "#28a745"; // Success green
+                resultText.innerText = "Skilled Reading!";
+            } else if (dValue === 'low' && lcValue === 'low') {
+                resultBox.style.backgroundColor = "#dc3545"; // Danger red
+                resultText.innerText = "Significant Difficulty";
+            } else {
+                resultBox.style.backgroundColor = "#f0ad4e"; // Warning orange
+                if(dValue === 'low') resultText.innerText = "Poor decoding hinders comp.";
+                else resultText.innerText = "Poor language hinders comp.";
+            }
+        }
+
+         // --- EHRI MODEL SPECIFIC JS ---
+         // Add click handlers to Ehri steps for interactivity
+         document.querySelectorAll('.step-node').forEach(node => {
+            node.addEventListener('click', function() {
+                 document.querySelectorAll('.step-node').forEach(n => n.classList.remove('active-step'));
+                 this.classList.add('active-step');
+            });
+         });
+
+
+         // --- STROM MODEL SPECIFIC JS ---
+         function wireTheBrain() {
+             const brain = document.getElementById('braindiagram');
+             brain.classList.add('wired');
+             // Reset after 3 seconds so they can do it again
+             setTimeout(() => {
+                 brain.classList.remove('wired');
+             }, 3000);
+         }
+
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizing Literacy Models</title>
+    <style>
+        :root {
+            --primary-color: #0056b3; /* Academic Blue */
+            --secondary-color: #f0ad4e; /* Warm Orange for accent */
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+            --rope-upper: #d9534f; /* Reddish for Language */
+            --rope-lower: #5bc0de; /* Light Blue for Decoding */
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+        }
+
+        .intro-text {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+            font-style: italic;
+            color: #666;
+        }
+
+        /*--- Navigation Tabs ---*/
+        .tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .tab-btn {
+            padding: 10px 20px;
+            background: #e9ecef;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .tab-btn:hover {
+            background: #dde2e6;
+            border-color: var(--primary-color);
+        }
+
+        .tab-btn.active {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 10px rgba(0,86,179,0.3);
+        }
+
+        /*--- Main Content Container ---*/
+        .model-container {
+            background: white;
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 30px;
+            min-height: 500px;
+        }
+
+        .model-section {
+            display: none; /* Hidden by default */
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .model-section.active-section {
+            display: block; /* Show only the active one */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            border-bottom: 3px solid var(--secondary-color);
+            display: inline-block;
+            margin-top: 0;
+        }
+
+        .diagram-box {
+            background: #fcfcfc;
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 25px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 250px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .caption {
+            background: #eef2f5;
+            padding: 15px;
+            border-left: 5px solid var(--primary-color);
+            border-radius: 5px;
+        }
+
+        /*--------------------------------------------------*/
+        /*--- MODEL SPECIFIC DIAGRAM STYLES ---*/
+        /*--------------------------------------------------*/
+
+        /*--- 1. SVR Styles ---*/
+        .svr-equation {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .svr-component {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            width: 150px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .svr-d { background-color: var(--rope-lower); }
+        .svr-lc { background-color: var(--rope-upper); }
+        .svr-rc { background-color: var(--success-color); opacity: 0.5; }
+        .math-symbol { font-size: 3rem; color: #555; }
+        .toggle-container {
+            display: flex;
+            gap: 5px;
+            margin-top: 10px;
+        }
+        .toggle-btn {
+            font-size: 0.8rem;
+            padding: 5px 10px;
+            cursor: pointer;
+            border: 1px solid white;
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+        .toggle-btn.active { background: white; color: #333; }
+
+        /*--- 2. Ehri Styles ---*/
+        .ehri-steps {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            position: relative;
+        }
+        .ehri-steps::before {
+            content: '';
+            position: absolute;
+            top: 30%;
+            left: 5%;
+            right: 5%;
+            height: 4px;
+            background: #ddd;
+            z-index: 0;
+        }
+        .step-node {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 22%;
+            cursor: pointer;
+        }
+        .step-circle {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border: 4px solid var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            margin-bottom: 15px;
+            transition: all 0.3s;
+        }
+        .step-node:hover .step-circle, .step-node.active-step .step-circle {
+            background: var(--secondary-color);
+            color: white;
+            transform: scale(1.1);
+        }
+        .step-label { font-size: 0.9rem; text-align: center; font-weight: bold; }
+        .step-example { font-size: 0.8rem; text-align: center; margin-top: 5px; color: #666; font-style: italic;}
+
+        /*--- 3. 4-Part Processor Styles ---*/
+        .processor-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            width: 80%;
+            position: relative;
+        }
+        .proc-unit {
+            background: white;
+            border: 3px solid var(--primary-color);
+            padding: 20px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            transition: all 0.3s;
+        }
+        .proc-unit:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0,50,150,0.2);
+            background: #f0f8ff;
+        }
+        .proc-icon { font-size: 2rem; margin-bottom: 10px; }
+        /* Arrows indicating connection */
+        .proc-arrow {
+            position: absolute;
+            background: var(--primary-color);
+            opacity: 0.3;
+        }
+        .arrow-horiz { height: 4px; width: 30px; top: 50%; left: 50%; margin-left: -15px; }
+        .arrow-vert { width: 4px; height: 30px; top: 50%; left: 50%; margin-top: -15px; }
+
+        /*--- 4. Scarborough's Rope Styles ---*/
+        .rope-container {
+            display: flex;
+            flex-direction: column;
+            width: 90%;
+        }
+        .strand-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .strand-label {
+            width: 30%;
+            font-weight: bold;
+            text-align: right;
+            padding-right: 20px;
+        }
+        .rope-visual {
+            width: 70%;
+            height: 60px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 10px 10px 0;
+        }
+        /* CSS trickery for twisting rope effect */
+        .rope-twist-upper {
+            background: repeating-linear-gradient(45deg, var(--rope-upper), var(--rope-upper) 10px, #c9302c 10px, #c9302c 20px);
+        }
+        .rope-twist-lower {
+            background: repeating-linear-gradient(45deg, var(--rope-lower), var(--rope-lower) 10px, #46b8da 10px, #46b8da 20px);
+        }
+        .rope-braid-final {
+             background: repeating-linear-gradient(45deg, 
+                var(--rope-upper), var(--rope-upper) 10px, 
+                var(--rope-lower) 10px, var(--rope-lower) 20px);
+            height: 80px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        .strand-detail { font-size: 0.7rem; color: white; padding: 2px 5px; margin-right: 5px; border-radius: 4px; display: inline-block;}
+
+        /*--- 5. Strom's Brain Styles ---*/
+        .brain-outline {
+            width: 400px;
+            height: 300px;
+            /* Simplified brain shape using border radius */
+            border-radius: 50% 50% 40% 40% / 60% 60% 40% 40%;
+            border: 4px solid #ccc;
+            position: relative;
+            background: #f9f9f9;
+        }
+        .brain-region {
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            z-index: 2;
+        }
+        /* Positioning regions roughly anatomically */
+        .region-vision { bottom: 30px; left: 40px; background: var(--danger-color); } /* Occipital */
+        .region-sound { top: 80px; left: 80px; background: var(--secondary-color); color: #333; } /* Temporal */
+        .region-meaning { top: 50px; right: 60px; background: var(--success-color); } /* Frontal/Parietalish */
+        
+        .neural-path {
+            position: absolute;
+            height: 6px;
+            background: #ddd;
+            transform-origin: 0 50%;
+            z-index: 1;
+            border-radius: 3px;
+            transition: all 1s ease-in-out;
+        }
+        /* When activated */
+        .brain-outline.wired .neural-path {
+            background: var(--primary-color);
+            box-shadow: 0 0 10px var(--primary-color);
+        }
+        .connect-btn {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 10;
+        }
+        .connect-btn:hover { background-color: #004494; }
+
+    </style>
+</head>
+<body>
+
+    <h1>The Theoretical Landscape of Elementary Literacy</h1>
+    <p class="intro-text">Professor's Note: These five models are not competing rules; they are different maps of the same territory. They help us visualize the complex, invisible process occurring in a student's mind as they learn to read.</p>
+
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchModel('svr')">1. The Simple View</button>
+        <button class="tab-btn" onclick="switchModel('ehri')">2. Ehri's Phases</button>
+        <button class="tab-btn" onclick="switchModel('fourpart')">3. 4-Part Processor</button>
+        <button class="tab-btn" onclick="switchModel('rope')">4. Scarborough's Rope</button>
+        <button class="tab-btn" onclick="switchModel('strom')">5. Strom's Reading Brain</button>
+    </div>
+
+    <div class="model-container">
+
+        <div id="svr" class="model-section active-section">
+            <h2>The Simple View of Reading (Gough & Tunmer)</h2>
+            <p>Reading comprehension is not a sum of skills, but a <b>product</b> of two distinct capacities. The critical insight is the multiplication sign: if either skill is zero, the outcome is zero.</p>
+            
+            <div class="diagram-box" style="flex-direction: column;">
+                <div class="svr-equation">
+                    <div class="svr-component svr-d">
+                        <div style="font-size: 2rem;">D</div>
+                        <div>Decoding</div>
+                        <div class="toggle-container">
+                            <button class="toggle-btn active" onclick="setSVR('d', 'low', this)">Low</button>
+                            <button class="toggle-btn" onclick="setSVR('d', 'high', this)">High</button>
+                        </div>
+                    </div>
+                    
+                    <div class="math-symbol">×</div>
+                    
+                    <div class="svr-component svr-lc">
+                        <div style="font-size: 2rem;">LC</div>
+                        <div>Language Comp</div>
+                        <div class="toggle-container">
+                            <button class="toggle-btn active" onclick="setSVR('lc', 'low', this)">Low</button>
+                            <button class="toggle-btn" onclick="setSVR('lc', 'high', this)">High</button>
+                        </div>
+                    </div>
+                    
+                    <div class="math-symbol">=</div>
+                    
+                    <div class="svr-component svr-rc" id="svr-result-box">
+                        <div style="font-size: 2rem;" id="svr-rc-text">RC</div>
+                        <div>Reading Comp</div>
+                        <div style="margin-top: 15px; font-weight: bold;" id="svr-outcome">Poor Outcome</div>
+                    </div>
+                </div>
+            </div>
+            <div class="caption">
+                <b>Diagram Check:</b> Set 'Decoding' to High and 'Language Comp' to Low. What happens? The result is poor. This explains the student who can read aloud perfectly but has no idea what they just read (often called "hyperlexia"). Both skills are necessary but insufficient on their own.
+            </div>
+        </div>
+
+
+        <div id="ehri" class="model-section">
+            <h2>Ehri's Phases of Word Reading</h2>
+            <p>This model visualizes the journey toward "sight word" status. It is a progression of how effectively a reader connects sounds to letters to glue puzzles into instantly recognized pictures.</p>
+            
+            <div class="diagram-box">
+                <div class="ehri-steps">
+                    <div class="step-node active-step">
+                        <div class="step-circle">1</div>
+                        <div class="step-label">Pre-Alphabetic</div>
+                        <div class="step-example">Reads "McDonald's" logo, but not the text.</div>
+                    </div>
+                    <div class="step-node">
+                        <div class="step-circle">2</div>
+                        <div class="step-label">Partial Alphabetic</div>
+                        <div class="step-example">Sees "Puppy", says "Pet" (uses first letter).</div>
+                    </div>
+                    <div class="step-node">
+                        <div class="step-circle">3</div>
+                        <div class="step-label">Full Alphabetic</div>
+                        <div class="step-example">Sounds out C-R-U-S-T slowly but accurately.</div>
+                    </div>
+                    <div class="step-node">
+                        <div class="step-circle">4</div>
+                        <div class="step-label">Consolidated</div>
+                        <div class="step-example">Instantly sees chunks like "ing", "tion", "est".</div>
+                    </div>
+                </div>
+            </div>
+            <div class="caption">
+                <b>Diagram Check:</b> Notice the progression is not about memorizing whole words visually. It is about becoming increasingly efficient at mapping speech sounds to letters until the process becomes instantaneous (automaticity).
+            </div>
+        </div>
+
+
+        <div id="fourpart" class="model-section">
+            <h2>The Four-Part Processing Model (Seidenberg & McClelland)</h2>
+            <p>Often called the "connectionist" view, imagine this as the engine block of the reading brain. Four distinct processors must work simultaneously and interactively to read a word.</p>
+            
+            <div class="diagram-box">
+                <div class="processor-grid">
+                    <div class="proc-unit" style="grid-column: span 2; background:#f9f9f9;">
+                        <div class="proc-icon">🤔</div>
+                        <strong>Context Processor</strong>
+                        <div style="font-size:0.9rem">Does this make sense in the sentence?</div>
+                        <div class="proc-arrow arrow-vert" style="bottom: -30px; top: auto;"></div>
+                    </div>
+
+                    <div class="proc-unit">
+                        <div class="proc-icon">📖</div>
+                        <strong>Meaning Processor</strong>
+                        <div style="font-size:0.9rem">What is the definition?</div>
+                        <div class="proc-arrow arrow-horiz" style="left: 100%; margin-left: -5px;"></div>
+                        <div class="proc-arrow arrow-vert" style="bottom: -30px; top: auto;"></div>
+                    </div>
+                    <div class="proc-unit">
+                        <div class="proc-icon">🗣️</div>
+                        <strong>Phonological Processor</strong>
+                        <div style="font-size:0.9rem">Speech Sounds</div>
+                        <div class="proc-arrow arrow-vert" style="bottom: -30px; top: auto;"></div>
+                    </div>
+
+                    <div class="proc-unit" style="grid-column: span 2; width: 50%; margin: auto;">
+                        <div class="proc-arrow arrow-vert" style="top: -30px;"></div>
+                        <div class="proc-icon">👁️</div>
+                        <strong>Orthographic Processor</strong>
+                        <div style="font-size:0.9rem">Visual Letters</div>
+                    </div>
+                </div>
+            </div>
+            <div class="caption">
+                <b>Diagram Check:</b> Hover over a processor. When a student encounters a new word, the "Orthographic" (vision) processor activates first. It immediately pings the "Phonological" (sound) and "Meaning" processors simultaneously, while "Context" checks if the result fits the sentence.
+            </div>
+        </div>
+
+
+        <div id="rope" class="model-section">
+            <h2>Scarborough's Rope</h2>
+            <p>This is perhaps the most famous visual. It shows that skilled reading is the intertwining of many sub-skills. Crucially, the two main strands behave differently over time.</p>
+            
+            <div class="diagram-box">
+                <div class="rope-container">
+                    <div class="strand-group">
+                        <div class="strand-label" style="color: var(--rope-upper)">Language Comprehension<br><small>(Increasingly Strategic)</small></div>
+                        <div class="rope-visual rope-twist-upper" style="display: flex; align-items: center; padding-left: 10px;">
+                             <span class="strand-detail" style="background:rgba(0,0,0,0.2)">Background Knowledge</span>
+                             <span class="strand-detail" style="background:rgba(0,0,0,0.2)">Vocabulary</span>
+                             <span class="strand-detail" style="background:rgba(0,0,0,0.2)">Verbal Reasoning</span>
+                        </div>
+                    </div>
+
+                    <div class="strand-group">
+                        <div class="strand-label" style="color: var(--rope-lower)">Word Recognition<br><small>(Increasingly Automatic)</small></div>
+                        <div class="rope-visual rope-twist-lower" style="display: flex; align-items: center; padding-left: 10px;">
+                            <span class="strand-detail" style="background:rgba(0,0,0,0.2)">Phonological Awareness</span>
+                            <span class="strand-detail" style="background:rgba(0,0,0,0.2)">Decoding</span>
+                            <span class="strand-detail" style="background:rgba(0,0,0,0.2)">Sight Recognition</span>
+                        </div>
+                    </div>
+
+                     <div class="strand-group" style="margin-top: -10px;">
+                        <div class="strand-label">The Goal:</div>
+                        <div class="rope-visual rope-braid-final">
+                            SKILLED READING
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="caption">
+                <b>Diagram Check:</b> Notice the difference in the labels. The lower blue strands (decoding) must become tight and automatic so the brain doesn't have to think about them. The upper red strands (comprehension) remain strategic—we always have to think to understand complex ideas.
+            </div>
+        </div>
+
+
+        <div id="strom" class="model-section">
+            <h2>Dr. Strom's Reading Brain ("Brain City")</h2>
+            <p>Modern neuroscience tells us humans are not born wired to read. We must recycle existing brain areas designed for vision, sound, and meaning, and build new "superhighways" connecting them.</p>
+            
+            <div class="diagram-box">
+                <div class="brain-outline" id="braindiagram">
+                    <button class="connect-btn" onclick="wireTheBrain()">Build the Neural Roads!</button>
+                    
+                    <div class="brain-region region-vision">Vision Villages<br><small>(New!)</small></div>
+                    <div class="brain-region region-sound">Sound City<br><small>(Innately wired)</small></div>
+                    <div class="brain-region region-meaning">Meaning Mountains<br><small>(Innately wired)</small></div>
+
+                    <div class="neural-path" style="width: 110px; bottom: 75px; left: 85px; transform: rotate(-55deg);"></div>
+                    <div class="neural-path" style="width: 110px; top: 110px; left: 160px; transform: rotate(-25deg);"></div>
+                     <div class="neural-path" style="width: 180px; bottom: 80px; left: 100px; transform: rotate(-35deg);"></div>
+
+                </div>
+            </div>
+            <div class="caption">
+                <b>Diagram Check:</b> Click the button above. We are born with "Sound City" and "Meaning Mountains" already running. Learning to read requires building a new area specifically for letters (often called the Visual Word Form Area, or "Letterbox") and physically growing neural connections to link vision to sound and meaning.
+            </div>
+        </div>
+
+    </div> <script>
+        // --- GLOBAL INTERACTIVITY ---
+
+        // Function to switch tabs
+        function switchModel(modelId) {
+            // 1. Hide all content sections
+            const sections = document.querySelectorAll('.model-section');
+            sections.forEach(section => {
+                section.classList.remove('active-section');
+            });
+
+            // 2. Deactivate all tab buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // 3. Show selected content and activate button
+            document.getElementById(modelId).classList.add('active-section');
+            // Find the button that calls this function with this ID and make it active
+            const activeBtn = Array.from(buttons).find(btn => btn.getAttribute('onclick').includes(modelId));
+            if (activeBtn) {
+                activeBtn.classList.add('active');
+            }
+        }
+
+
+        // --- SVR MODEL SPECIFIC JS ---
+        let dValue = 'low';
+        let lcValue = 'low';
+
+        function setSVR(type, value, btnElement) {
+            // Update state
+            if (type === 'd') dValue = value;
+            if (type === 'lc') lcValue = value;
+
+            // Update button visual states within the clicked group
+            const parent = btnElement.parentElement;
+            const siblings = parent.querySelectorAll('.toggle-btn');
+            siblings.forEach(sib => sib.classList.remove('active'));
+            btnElement.classList.add('active');
+
+            // Calculate Outcome
+            const resultBox = document.getElementById('svr-result-box');
+            const resultText = document.getElementById('svr-outcome');
+
+            resultBox.style.opacity = "1";
+
+            if (dValue === 'high' && lcValue === 'high') {
+                resultBox.style.backgroundColor = "#28a745"; // Success green
+                resultText.innerText = "Skilled Reading!";
+            } else if (dValue === 'low' && lcValue === 'low') {
+                resultBox.style.backgroundColor = "#dc3545"; // Danger red
+                resultText.innerText = "Significant Difficulty";
+            } else {
+                resultBox.style.backgroundColor = "#f0ad4e"; // Warning orange
+                if(dValue === 'low') resultText.innerText = "Poor decoding hinders comp.";
+                else resultText.innerText = "Poor language hinders comp.";
+            }
+        }
+
+         // --- EHRI MODEL SPECIFIC JS ---
+         // Add click handlers to Ehri steps for interactivity
+         document.querySelectorAll('.step-node').forEach(node => {
+            node.addEventListener('click', function() {
+                 document.querySelectorAll('.step-node').forEach(n => n.classList.remove('active-step'));
+                 this.classList.add('active-step');
+            });
+         });
+
+
+         // --- STROM MODEL SPECIFIC JS ---
+         function wireTheBrain() {
+             const brain = document.getElementById('braindiagram');
+             brain.classList.add('wired');
+             // Reset after 3 seconds so they can do it again
+             setTimeout(() => {
+                 brain.classList.remove('wired');
+             }, 3000);
+         }
+
+    </script>
+</body>
+</html>
