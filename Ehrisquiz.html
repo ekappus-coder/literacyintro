@@ -1,0 +1,77 @@
+/**
+ * Creates an automated Literacy Assessment Quiz and a corresponding Study Guide.
+ * * Target Audience: Pre-service Teachers
+ * Focus: Ehri's Phases of Word Reading & Scarborough's Rope
+ */
+
+function generateEducationalPackage() {
+  const ui = SpreadsheetApp.getUi(); // Useful if running from a Sheet
+  
+  try {
+    // --- 1. CREATE GOOGLE FORM ---
+    const form = FormApp.create('Quiz 2: Application of Ehri’s Phases');
+    form.setIsQuiz(true)
+        .setDescription('Note to Students: Errors are not failures; they are neural growth! This quiz tests your diagnostic skills.')
+        .setConfirmationMessage('Neural growth complete! Review your results to understand the logic of literacy development.')
+        .setAllowResponseEdits(false)
+        .setPublishQuizScore(true);
+
+    // --- 2. CREATE STUDY GUIDE DOC ---
+    const doc = DocumentApp.create('Study Guide: Ehri’s Phases & Quiz Rationales');
+    const body = doc.getBody();
+    
+    body.appendParagraph('Study Guide: Literacy Development Diagnostics').setHeading(DocumentApp.ParagraphHeading.HEADING1);
+    body.appendParagraph('Purpose: This document provides the rationale for Quiz 2. Use it to refine your mental model of how children learn to read.');
+
+    const quizData = getQuizData();
+
+    quizData.forEach(data => {
+      // Add Question to Form
+      let item = form.addMultipleChoiceItem();
+      item.setTitle(data.q).setPoints(1);
+      let choices = data.options.map(opt => item.createChoice(opt, opt === data.correct));
+      item.setChoices(choices);
+      
+      let feedback = FormApp.createFeedback().setText(data.feedback).build();
+      item.setFeedbackForCorrect(feedback).setFeedbackForIncorrect(feedback);
+
+      // Add Content to Doc
+      body.appendParagraph(data.q).setHeading(DocumentApp.ParagraphHeading.HEADING3);
+      body.appendParagraph("Correct Answer: " + data.correct).setBold(true);
+      body.appendParagraph("Pedagogical Rationale: " + data.feedback);
+      body.appendHorizontalRule();
+    });
+
+    console.log('Success! Form URL: ' + form.getEditUrl());
+    console.log('Success! Doc URL: ' + doc.getUrl());
+
+  } catch (e) {
+    console.log('Error encountered: ' + e.toString());
+  }
+}
+
+/**
+ * Data Object containing questions, answers, and educational rationales.
+ */
+function getQuizData() {
+  return [
+    {
+      q: "The word 'inactive' is recognized in which of Ehri's phases?",
+      options: ["Pre-alphabetic", "Early Alphabetic", "Later Alphabetic", "Consolidated Alphabetic"],
+      correct: "Consolidated Alphabetic",
+      feedback: "The student sees the word as chunks (in-act-ive). This morphological awareness marks the Consolidated phase."
+    },
+    {
+      q: "Why might a student confuse 'house' with 'horse' in the Later Alphabetic phase?",
+      options: ["They are guessing based on first letters.", "They are attending to the full internal structure but misplaced a phoneme.", "They lack any phonemic awareness.", "They are relying on visual logos."],
+      correct: "They are attending to the full internal structure but misplaced a phoneme.",
+      feedback: "In the Full/Later Alphabetic phase, students map every letter. This error shows they are working through the word's interior."
+    },
+    {
+      q: "A student who can decode 'savana' phonetically is in which phase?",
+      options: ["Pre-alphabetic", "Early Alphabetic", "Later Alphabetic", "Consolidated Alphabetic"],
+      correct: "Early Alphabetic",
+      feedback: "Decoding simple, phonetically regular words by sound-letter correspondence is a foundational Early Alphabetic skill."
+    }
+  ];
+}
