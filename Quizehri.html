@@ -1,0 +1,51 @@
+function createQuizAndStudyDoc() {
+  try {
+    // 1. Create the Google Form (Quiz)
+    const form = FormApp.create('Quiz 2: Application of Ehri’s Phases');
+    form.setIsQuiz(true)
+        .setDescription('Errors are the literal spark of neural growth! Practice your diagnostic skills here.')
+        .setConfirmationMessage('Neural growth complete! Review your results to see the logic behind the phases.')
+        .setPublishQuizScore(true);
+
+    // 2. Create the Google Doc (Study Guide)
+    const doc = DocumentApp.create('Study Guide: Ehri’s Phases & Quiz 2 Rationales');
+    const body = doc.getBody();
+    
+    // Add Content to Doc
+    body.appendParagraph('Study Guide: Decoding Ehri’s Phases').setHeading(DocumentApp.ParagraphHeading.HEADING1);
+    body.appendParagraph('Professor\'s Note: Remember that making errors is part of the learning process. It is how the brain wires new information for long-term retention.');
+    body.appendHorizontalRule();
+
+    const quizData = [
+      { q: "The word 'inactive' is in which of Ehri's phases?", options: ["Pre-alphabetic", "Early Alphabetic", "Later Alphabetic", "Consolidated Alphabetic"], correct: "Consolidated Alphabetic", feedback: "Correct. 'Inactive' is recognized by its morphemes (in-act-ive), a hallmark of the Consolidated phase." },
+      { q: "Why might a student confuse 'house' with 'horse'?", options: ["They are guessing by the first letter.", "They are in the Later Alphabetic phase mapping every letter.", "They are in the Pre-alphabetic phase.", "They are using visual logos."], correct: "They are in the Later Alphabetic phase mapping every letter.", feedback: "Correct. Confusing 'orthographic neighbors' shows the student is attending to the full internal structure of the word." },
+      { q: "A student who can decode the word 'savana' phonetically is in which phase?", options: ["Pre-alphabetic", "Early Alphabetic", "Later Alphabetic", "Consolidated Alphabetic"], correct: "Early Alphabetic", feedback: "Correct. Successfully sounding out a phonetically regular word like 'savana' demonstrates foundational decoding skills." },
+      { q: "Milo recognizes 'Target' by the logo but cannot read 'top' in plain text. Phase?", options: ["Pre-alphabetic", "Early Alphabetic", "Later Alphabetic", "Consolidated Alphabetic"], correct: "Pre-alphabetic", feedback: "Correct! He is using visual 'environmental print,' not letter-sound decoding." },
+      { q: "Lila spells 'sand' as 'SD.' Which phase is this partial representation?", options: ["Pre-alphabetic", "Early Alphabetic", "Later Alphabetic", "Consolidated Alphabetic"], correct: "Early Alphabetic", feedback: "Yes! Capturing only the most salient sounds is a hallmark of the Early phase." }
+    ];
+
+    quizData.forEach(data => {
+      // Add to Form
+      let item = form.addMultipleChoiceItem();
+      item.setTitle(data.q).setPoints(1);
+      let choices = data.options.map(opt => item.createChoice(opt, opt === data.correct));
+      item.setChoices(choices);
+      let feedback = FormApp.createFeedback().setText(data.feedback).build();
+      item.setFeedbackForCorrect(feedback).setFeedbackForIncorrect(feedback);
+
+      // Add to Doc
+      body.appendParagraph(data.q).setHeading(DocumentApp.ParagraphHeading.HEADING3);
+      body.appendParagraph("Correct Answer: " + data.correct);
+      body.appendParagraph("Rationale: " + data.feedback);
+      body.appendParagraph(""); 
+    });
+
+    // Output links to the log
+    console.log('SUCCESS!');
+    console.log('GOOGLE FORM URL: ' + form.getEditUrl());
+    console.log('STUDY DOC URL: ' + doc.getUrl());
+    
+  } catch (e) {
+    console.log('Error: ' + e.toString());
+  }
+}
