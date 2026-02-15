@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Literacy Quiz Generator - Teacher Training</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 40px auto; padding: 20px; background-color: #f4f7f6; }
+        .container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .philosophy { font-style: italic; background: #e8f4fd; padding: 15px; border-left: 5px solid #3498db; margin-bottom: 20px; }
+        .code-block { background: #272822; color: #f8f8f2; padding: 20px; border-radius: 5px; overflow-x: auto; position: relative; }
+        button { background: #3498db; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 16px; transition: background 0.3s; }
+        button:hover { background: #2980b9; }
+        .copy-btn { position: absolute; top: 10px; right: 10px; background: #555; font-size: 12px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Literacy Diagnostic Tool Generator</h1>
+    
+    <div class="philosophy">
+        "Errors are the spark of neural growth. This tool generates applied knowledge assessments for pre-service teachers."
+    </div>
+
+    <p>To deploy your <strong>Quiz 2</strong> and <strong>Study Guide</strong>, copy the Google Apps Script code below and paste it into your <a href="https://script.google.com" target="_blank">Google Apps Script Editor</a>.</p>
+
+    <div class="code-block">
+        <button class="copy-btn" onclick="copyCode()">Copy Code</button>
+        <pre id="codeContent">
+/**
+ * GENERATOR CODE FOR GOOGLE SERVICES
+ * Includes: Ehri's Phases Quiz & Study Doc
+ */
+function createEducationalPackage() {
+  const quizTitle = "Quiz 2: Application of Ehri’s Phases";
+  const form = FormApp.create(quizTitle).setIsQuiz(true);
+  const doc = DocumentApp.create("Study Guide: Ehri’s Phases");
+  
+  const questions = [
+    {q: "The word 'inactive' is in which phase?", a: "Consolidated", f: "Recognized via morphemes (in-act-ive)."},
+    {q: "Why confuse 'house' with 'horse'?", a: "Later Alphabetic mapping", f: "Student is attending to every letter but misplacing internal phonemes."},
+    {q: "Decoding 'savana' phonetically?", a: "Early Alphabetic", f: "Standard left-to-right phonetic decoding."}
+  ];
+
+  questions.forEach(item => {
+    form.addMultipleChoiceItem().setTitle(item.q).setChoices([
+        form.createChoice(item.a, true),
+        form.createChoice("Other Phase", false)
+    ]).setFeedbackForCorrect(FormApp.createFeedback().setText(item.f).build());
+    
+    doc.getBody().appendParagraph(item.q).setHeading(DocumentApp.ParagraphHeading.HEADING3);
+    doc.getBody().appendParagraph("Rationale: " + item.f);
+  });
+
+  Logger.log("Form URL: " + form.getEditUrl());
+  Logger.log("Doc URL: " + doc.getUrl());
+}
+        </pre>
+    </div>
+
+    <h3>Step 2: Generate Visual Assets</h3>
+    <p>Use the following prompt in the Nana Banana AI tool to create your teaching visual:</p>
+    <blockquote>
+        <em>"Generate a high-resolution educational diagram of Scarborough's Reading Rope. Show Language Comprehension and Word Recognition strands braiding into 'Skilled Reading'."</em>
+    </blockquote>
+</div>
+
+<script>
+    function copyCode() {
+        const code = document.getElementById('codeContent').innerText;
+        navigator.clipboard.writeText(code);
+        alert('Code copied to clipboard!');
+    }
+</script>
+
+</body>
+</html>
